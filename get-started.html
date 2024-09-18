@@ -1,0 +1,25 @@
+
+    <!-- Main Section -->
+    <main class="container mx-auto mt-8 p-4">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                <h3 class="text-2xl font-semibold mb-4">For Senders</h3>
+                <p class="mb-6">Book deliveries and let our AI suggest the best time slots.</p>
+                <a href="sender.html" class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition duration-200">Go to Sender Dashboard</a>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-md text-center">
+                <h3 class="text-2xl font-semibold mb-4">For Recipients</h3>
+                <p class="mb-6">Easily modify delivery time slots to suit your schedule.</p>
+                <a href="recipient.html" class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition duration-200">Go to Recipient Dashboard</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Load the common header
+        fetch('common-header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+    </script>

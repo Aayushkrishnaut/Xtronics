@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Delivery System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            padding-top: 64px; /* Adjust this value based on your navbar height */
+            background-image: url(vhoa0.jpg); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Fixed Navbar -->
+    <nav class="fixed top-0 left-0 right-0 bg-black text-white p-4 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-bold">Xtronic</a>
+            <div class="space-x-4">
+                <a href="index.html" class="hover:text-gray-300">Home</a>
+                <a href="sender.html" class="hover:text-gray-300">Sender</a>
+                <a href="recipient.html" class="hover:text-gray-300">Recipient</a>
+                <a href="login.html" class="hover:text-gray-300">Login</a>
+                <a href="signup.html" class="hover:text-gray-300">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="text-center pt-20 text-white">
+        <h1 class="text-5xl font-bold mb-5 text-shadow">Optimize Your Deliveries with AI</h1>
+        <p class="text-lg mb-6 text-shadow">Our AI-powered system optimizes delivery time slots for both senders and recipients.</p>
+        <button id="getStartedBtn" class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition duration-200">
+            Get Started
+        </button>
+
+        <!-- Modal for options -->
+        <div id="optionModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+            <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                <h2 class="text-2xl font-semibold mb-4 text-black">Choose your option</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-5 text-black">For Senders</h3>
+                        <p class="mb-3 text-gray-700">Book deliveries and let our AI suggest the best time slots.</p>
+                        <a href="sender.html" class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition duration-200">Go to Sender Dashboard</a>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4 text-black">For Recipients</h3>
+                        <p class="mb-4 text-gray-700">Easily modify delivery time slots to suit your schedule.</p>
+                        <a href="recipient.html" class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition duration-200">Go to Recipient Dashboard</a>
+                    </div>
+                </div>
+                <button id="closeModal" class="mt-6 bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-700">Close</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Modal functionality
+        const getStartedBtn = document.getElementById('getStartedBtn');
+        const optionModal = document.getElementById('optionModal');
+        const closeModal = document.getElementById('closeModal');
+
+        getStartedBtn.addEventListener('click', () => {
+            optionModal.classList.remove('hidden');
+        });
+
+        closeModal.addEventListener('click', () => {
+            optionModal.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>

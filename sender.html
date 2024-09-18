@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Delivery System - Sender Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.3.1/luxon.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div id="header-placeholder"></div>
+
+    <main class="container mx-auto mt-8 p-6">
+        <h2 class="text-3xl font-bold mb-4">Sender Dashboard</h2>
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form id="senderForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="parcelDetails">
+                        Parcel Details
+                    </label>
+                    <textarea id="parcelDetails" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="3" required></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="deliveryDate">
+                        Delivery Date
+                    </label>
+                    <input type="date" id="deliveryDate" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="timeSlot">
+                        Time Slot
+                    </label>
+                    <select id="timeSlot" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <option value="">Select a time slot</option>
+                        <option value="09:00-12:00">09:00 - 12:00</option>
+                        <option value="12:00-15:00">12:00 - 15:00</option>
+                        <option value="15:00-18:00">15:00 - 18:00</option>
+                    </select>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        Book Delivery
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Load the common header
+        fetch('common-header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Initialize date input with today's date
+        const today = luxon.DateTime.now().toFormat('yyyy-MM-dd');
+        document.getElementById('deliveryDate').value = today;
+        document.getElementById('deliveryDate').min = today;
+
+        // Handle form submission
+        document.getElementById('senderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const parcelDetails = document.getElementById('parcelDetails').value;
+            const deliveryDate = document.getElementById('deliveryDate').value;
+            const timeSlot = document.getElementById('timeSlot').value;
+            const bookingId = Math.random().toString(36).substr(2, 9).toUpperCase();
+
+            alert(`Booking created successfully. Your booking ID is ${bookingId}`);
+            this.reset();
+            document.getElementById('deliveryDate').value = today;
+        });
+    </script>
+</body>
+</html>

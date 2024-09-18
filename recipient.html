@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Delivery System - Recipient Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.3.1/luxon.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div id="header-placeholder"></div>
+
+    <main class="container mx-auto mt-8 p-6">
+        <h2 class="text-3xl font-bold mb-4">Recipient Dashboard</h2>
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form id="recipientForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="bookingId">
+                        Booking ID
+                    </label>
+                    <input type="text" id="bookingId" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your booking ID" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-red-700 text-sm font-bold mb-2" for="newTimeSlot">
+                        Modify Time Slot
+                    </label>
+                    <select id="newTimeSlot" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        <option value="">Select a new time slot</option>
+                        <option value="09:00-12:00">09:00 - 12:00</option>
+                        <option value="12:00-15:00">12:00 - 15:00</option>
+                        <option value="15:00-18:00">15:00 - 18:00</option>
+                    </select>
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        Modify Time Slot
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Load the common header
+        fetch('common-header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            });
+
+        // Handle form submission
+        document.getElementById('recipientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const bookingId = document.getElementById('bookingId').value;
+            const newTimeSlot = document.getElementById('newTimeSlot').value;
+
+            alert(`Time slot modified successfully for Booking ID: ${bookingId}. New time slot: ${newTimeSlot}`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
