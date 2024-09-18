@@ -24,29 +24,39 @@
     <nav class="fixed top-0 left-0 right-0 bg-black text-white p-4 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="text-xl font-bold">Xtronic</a>
-            <div class="space-x-4">
+            <div class="hidden md:flex space-x-4">
                 <a href="index.html" class="hover:text-gray-300">Home</a>
                 <a href="sender.html" class="hover:text-gray-300">Sender</a>
                 <a href="recipient.html" class="hover:text-gray-300">Recipient</a>
                 <a href="login.html" class="hover:text-gray-300">Login</a>
                 <a href="signup.html" class="hover:text-gray-300">Sign Up</a>
             </div>
+            <button id="mobileMenuButton" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden flex flex-col items-center bg-black p-4">
+            <a href="index.html" class="my-2 hover:text-gray-300">Home</a>
+            <a href="sender.html" class="my-2 hover:text-gray-300">Sender</a>
+            <a href="recipient.html" class="my-2 hover:text-gray-300">Recipient</a>
+            <a href="login.html" class="my-2 hover:text-gray-300">Login</a>
+            <a href="signup.html" class="my-2 hover:text-gray-300">Sign Up</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="text-center pt-20 text-white">
-        <h1 class="text-5xl font-bold mb-5 text-shadow">Optimize Your Deliveries with AI</h1>
-        <p class="text-lg mb-6 text-shadow">Our AI-powered system optimizes delivery time slots for both senders and recipients.</p>
+    <section class="text-center pt-20 text-white px-4">
+        <h1 class="text-3xl md:text-5xl font-bold mb-5 text-shadow">Optimize Your Deliveries with AI</h1>
+        <p class="text-base md:text-lg mb-6 text-shadow">Our AI-powered system optimizes delivery time slots for both senders and recipients.</p>
         <button id="getStartedBtn" class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition duration-200">
             Get Started
         </button>
 
         <!-- Modal for options -->
         <div id="optionModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-            <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg text-center">
                 <h2 class="text-2xl font-semibold mb-4 text-black">Choose your option</h2>
-                <div class="grid md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-gray-100 p-4 rounded-lg shadow-md">
                         <h3 class="text-xl font-semibold mb-5 text-black">For Senders</h3>
                         <p class="mb-3 text-gray-700">Book deliveries and let our AI suggest the best time slots.</p>
@@ -64,6 +74,14 @@
     </section>
 
     <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
         // Modal functionality
         const getStartedBtn = document.getElementById('getStartedBtn');
         const optionModal = document.getElementById('optionModal');
